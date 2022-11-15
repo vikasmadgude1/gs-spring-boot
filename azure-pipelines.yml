@@ -29,19 +29,19 @@ variables:
   vmImageName: 'ubuntu-latest'
 
   stages:
-  - stage: Build
-    displayName: Build stage
-    jobs:
-    - job: MavenPackageAndPublishArtifacts
-      displayName: Maven Package and Publish Artifacts
-      pool:
-        vmImage: $(vmImageName)
+    - stage: Build
+      displayName: Build stage
+      jobs:
+      - job: MavenPackageAndPublishArtifacts
+        displayName: Maven Package and Publish Artifacts
+        pool:
+          vmImage: $(vmImageName)
     
-    steps:
-    - task: Maven@3
-      displayName: 'Maven Package'
-      inputs:
-        mavenPomFile: 'app/pom.xml'
+      steps:
+      - task: Maven@3
+        displayName: 'Maven Package'
+        inputs:
+          mavenPomFile: 'app/pom.xml'
 
     - task: CopyFiles@2
       displayName: 'Copy Files to artifact staging directory'
